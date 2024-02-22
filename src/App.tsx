@@ -1,6 +1,6 @@
 import React from "react";
 import { AppWrapper } from "./wrapper";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import {
      CategoryPage,
      DashboardPage,
@@ -60,6 +60,7 @@ function App() {
                               <Route path="/settings/account" element={<AdminProfilePage />} />
                               <Route path="/settings/new-admin" element={<NewAdminPage />} />
                               <Route path="/settings/admins" element={<AdminDetails />} />
+                              <Route path="*" element={<Navigate to="/" replace />} />
                          </Route>
                     </Routes>
                </BrowserRouter>
