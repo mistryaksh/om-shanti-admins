@@ -29,7 +29,7 @@ export const SendMailToDonationPage = () => {
                isError: isSendMailError,
                error: sendMailError,
                data: sendMailData,
-               // isLoading: isSendMailLoading,
+               isLoading: isSendMailLoading,
                isSuccess: isSendMailSuccess,
           },
      ] = useSendingMailMutation();
@@ -49,7 +49,10 @@ export const SendMailToDonationPage = () => {
      const handlePDFFIle = async () => {
           if (mailDesc.file) {
                if (!selectedPDF) {
-                    const pdf = await Upload80G(mailDesc.file);
+                    const pdf = await Upload80G({
+                         file: mailDesc.file,
+                         userName: donationData?.data.custName as string,
+                    });
                     setSelectedPDF(pdf);
                } else {
                     await SendMail({
@@ -73,6 +76,7 @@ export const SendMailToDonationPage = () => {
                }
           }
           if (isSendMailError) {
+               console.log(sendMailError);
                if ((sendMailError as any).data) {
                     dispatch(handleError((sendMailError as any).data.message));
                } else {
@@ -84,7 +88,7 @@ export const SendMailToDonationPage = () => {
           if (isSendMailSuccess) {
                if (sendMailData?.data === "MAIL_SENT") {
                     toast.success(`80G certificate has been sent to ${donationData?.data.email}`);
-                    navigate("/dashboard", { replace: true });
+                    navigate("/donations", { replace: true });
                }
           }
 
@@ -176,7 +180,9 @@ export const SendMailToDonationPage = () => {
                          </div>
                     )}
                     <div className="mt-10 flex justify-end" onClick={handlePDFFIle}>
-                         <Button filled>Share now!</Button>
+                         <Button filled loading={isSendMailLoading}>
+                              {!selectedPDF ? "Upload 80G" : "Share now!"}
+                         </Button>
                     </div>
                </div>
           </Layout>

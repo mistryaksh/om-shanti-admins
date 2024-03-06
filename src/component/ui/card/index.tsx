@@ -14,7 +14,7 @@ export const DashboardCard: FC<DashboardCardProps> = ({ Icon, label, path, value
      return (
           <div
                className="shadow-xl px-5 py-2 border-primary-500 border-2 gap-10 flex items-center cursor-pointer bg-indigo-50 rounded-xl text-gray-900 hover:bg-indigo-500 hover:text-white transition-all duration-300 group"
-               onClick={() => navigate("/events")}
+               onClick={() => navigate(path)}
           >
                <div className="flex gap-5 items-center flex-col">
                     <Icon size={50} className="text-primary-500 group-hover:text-white" />

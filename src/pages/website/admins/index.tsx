@@ -37,6 +37,7 @@ export const AdminDetails = () => {
                     </Button>
                </div>
                <ReactTable
+                    progressPending={isAdminLoading}
                     data={adminData?.data || []}
                     columns={[
                          {

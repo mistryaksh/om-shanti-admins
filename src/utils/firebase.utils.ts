@@ -58,8 +58,8 @@ export function GetBytes(x: string) {
      return n.toFixed(n < 10 && l > 0 ? 1 : 0) + " " + units[l];
 }
 
-export const Upload80G = async (file: File) => {
-     const pdfName = `${file.name}`;
+export const Upload80G = async ({ file, userName }: { file: File; userName: string }) => {
+     const pdfName = `${userName}`;
      const uploadFile = await firebaseFileStorage.ref(`/80G/${pdfName}`).put(file);
      const uploadedFileRef = uploadFile.ref.fullPath.toString();
      const files = await firebaseFileStorage.ref(uploadedFileRef).getDownloadURL();

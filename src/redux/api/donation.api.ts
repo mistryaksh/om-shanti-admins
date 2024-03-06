@@ -7,7 +7,7 @@ const DonationApi = createApi({
      reducerPath: "donationApi",
      endpoints: ({ query, mutation }) => ({
           GetAllDonations: query<{ data: IDonationProps[] }, void>({
-               query: () => `/donations/all`,
+               query: () => `/donation/all`,
           }),
           GetDonationById: query<{ data: IDonationProps }, string>({
                query: (id) => `/donations/${id}`,

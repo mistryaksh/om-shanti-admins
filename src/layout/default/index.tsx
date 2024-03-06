@@ -42,8 +42,8 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
                {sideNav && (
                     <nav className="w-[260px] p-3 flex flex-col items-center gap-5 justify-between">
                          <div className="flex flex-col gap-3 w-full">
-                              <div className="h-full w-full">
-                                   <h6 className="text-2xl uppercase mb-10">Om shanti</h6>
+                              <div className="h-full w-[30%] object-fill">
+                                   <img src={require("../../assets/logo.jpeg")} alt="om_shanti" />
                               </div>
                               <AppLink Icon={MdAutoGraph} label="dashboard" path="/dashboard" />
                               <AppLink Icon={MdOutlineCategory} label="categories" path="/category" />
@@ -69,7 +69,7 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
                          </div>
                     </nav>
                )}
-               <main className="flex-1 relative overflow-y-scroll">
+               <main className="flex-1 relative overflow-y-scroll h-screen">
                     <nav className="fixed w-full px-2 bg-white py-3 flex justify-between items-center">
                          <button type="button" className="p-2" onClick={() => dispatch(handleSideNav())}>
                               <MdOutlineMenu size={26} />
