@@ -2,8 +2,8 @@ import { object, string } from "yup";
 import { ILoginProps } from "../interface";
 
 export const initialLoginProps: ILoginProps = {
-     email: "tech@omshanti.com",
-     password: "abc123",
+     email: "",
+     password: "",
 };
 
 export const loginValidationSchema = object().shape({
